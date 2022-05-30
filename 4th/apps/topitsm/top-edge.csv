@@ -1,0 +1,70 @@
+Left;Right;Color;Label
+AccDB;CostAllDB;black;Cost
+CapMon;IncidentDB;red;Device
+CapMon;CostAllDB;black;Device usage
+CapMon;LicManDB;black;Device usage
+ChangeDB;Dashboard;black;Change
+ChangeDB;CMDBItem;red;Change
+CMDBItem;IncidentDB;black;CI
+CMDBItem;ChangeDB;black;CI
+CMDBItem;PhysPlan;black;CI
+CMDBItem;Dashboard;black;CI
+CMDBItem;ICTServDB;black;CI
+CMDBItem;IdManDB;black;CI
+CMDBItem;ContManDB;black;CI
+CMDBProd;CMDBItem;black;Product
+CMDBProd;Dashboard;black;Product
+CMDBProd;LicManDB;black;Product
+CMDBProd;KnownProbDB;black;Product
+CMDBProd;MediaDB;black;Product
+CMDBProd;DocSys;black;Product
+CMDBProd;BusAppDB;black;Product
+CMDBProd;StockDB;black;Product
+ContManDB;DocSys;black;Contract
+ContManDB;LicManDB;black;License
+CorpStruct;HRMDB;black;Department
+CorpStruct;FinStruct;black;Department
+CorpStruct;SLADB;black;Department
+CostAllDB;Dashboard;black;Invoice
+CostAllDB;AccDB;red;Invoice
+FailDet;IncidentDB;red;Device
+FinStruct;AccDB;black;Cost center
+FinStruct;CostAllDB;black;Cost center
+HRMDB;IncidentDB;black;Person
+HRMDB;RolesDB;black;Person
+HRMDB;IdManDB;black;Person
+ICTServDB;CostAllDB;black;Application
+ICTServDB;IncidentDB;black;Application
+ICTServDB;BusAppDB;black;Application
+ICTServDB;PDCDB;black;Service
+IdManDB;LicManDB;black;Account
+IncidentDB;Dashboard;black;Incident
+IncidentDB;KnownProbDB;black;Incident
+Inventory;CMDBItem;black;Device
+Inventory;CMDBProd;black;Device
+Inventory;LicManDB;black;Device
+KnownProbDB;IncidentDB;black;Known error
+LicManDB;CostAllDB;black;License
+LocDB;CMDBItem;black;Location
+LocDB;HRMDB;black;Location
+LocDB;StdSrvDB;black;Location
+MediaDB;ContDB;black;Software
+PDCDB;DocSys;black;PDC
+PerfMon;IncidentDB;red;Device
+ReqDB;SCCS;black;Requirement
+RolesDB;CMDBItem;black;Role
+RolesDB;CMDBProd;black;Role
+RolesDB;PDCDB;black;Role
+RolesDB;SLADB;black;Role
+RolesDB;ICTServDB;black;Role
+RolesDB;ChangeDB;black;Role
+SCCS;DocSys;black;Project
+SecDet;IncidentDB;red;Device
+SLADB;ICTServDB;black;SLA
+SLADB;Dashboard;black;SLA
+SLADB;ContDB;black;SLA
+SLADB;DocSys;black;SLA
+SLADB;StdSrvDB;black;SLA
+StdSrvDB;PDCDB;black;Service
+ICTServDB;ContDB;black;Service
+ContDB;DocSys;black;Cont. Plan

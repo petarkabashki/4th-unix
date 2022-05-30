@@ -1,0 +1,41 @@
+\ Preprocessor List Class - Copyright 2021 J.L. Bezemer
+\ You can redistribute this file and/or modify it under
+\ the terms of the GNU General Public License
+
+[UNDEFINED] List [IF]
+[UNDEFINED] #Listings [IF]
+32 constant #Listings
+[THEN]
+
+:class List                            \ we need a kind of list
+   extends Object
+     #Listings +field entries
+     field:  lp
+     method: lpush
+     method: lpop
+     method: lget
+     method: lsize
+   end-extends
+                                       \ set list pointer
+   :new this -> entries this -> lp ! ;method
+   :method lpush this -> lp tuck @ ! 1 cells swap +! ;method
+   :method lpop  this -> lp -1 over +! @ @ ;method
+   :method lget  cells this -> entries + @ ;method
+   :method lsize this -> lp @ this -> entries - ;method
+                                       \ calculate size
+   private{ entries lp }
+;class
+
+:class ObjectList                      \ we know the list contains objects
+  extends List
+  end-extends
+
+  :delete                              \ destructor
+    0 begin                            \ start at the first of the list
+      dup this -> lsize <              \ when not at the end of the list
+    while                              \ get the entry and free it
+      dup this -> lget delete 1+
+    repeat drop                        \ get the next entry on the list
+  ;method
+;class
+[THEN]

@@ -1,0 +1,44 @@
+\ Preprocessor Hashmap Class - Copyright 2021 J.L. Bezemer
+\ You can redistribute this file and/or modify it under
+\ the terms of the GNU General Public License
+
+[UNDEFINED] HashMap   [IF]
+[UNDEFINED] (hash)    [IF] include lib/hash.4th    [THEN]
+[UNDEFINED] hashtable [IF] include lib/hashkey.4th [THEN]
+
+[UNDEFINED] #Hashes [IF]
+32 constant #Hashes
+[THEN]
+
+:class HashMap                         \ an OO wrapper for hashkey.4th
+   extends Object
+     #Hashes +field entries            \ put map inside the object
+     method: hval                      \ get an indexed value
+     method: hget                      \ get a hashed value
+     method: hput                      \ enter a value
+     method: hsize                     \ size of the hashtable
+   end-extends
+                                       \ initialize and set hash algorithm
+   :new this -> entries #Hashes hashtable ['] fnv1a is hash ;method
+                                       \ that's where the counter is hidden
+   :method hval  1+ 2* 1+ cells this -> entries + @ ;method
+   :method hsize this -> entries @   ;method
+   :method hget  this -> entries get ;method
+   :method hput  this -> entries put ;method
+
+   private{ entries }
+;class
+
+:class ObjectMap                       \ we know the hashing table
+  extends HashMap                      \ contains objects
+  end-extends
+
+  :delete                              \ destructor
+    0 begin
+      dup this -> hsize <              \ not at the end?
+    while
+      dup this -> hval delete 1+       \ call destructor
+    repeat drop                        \ drop the count
+  ;method
+;class
+[THEN]
